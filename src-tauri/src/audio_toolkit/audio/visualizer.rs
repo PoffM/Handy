@@ -1,7 +1,7 @@
 use rustfft::{num_complex::Complex32, Fft, FftPlanner};
 use std::sync::Arc;
 
-const DB_MIN: f32 = -55.0;
+const DB_MIN: f32 = -90.0;
 const DB_MAX: f32 = -8.0;
 const GAIN: f32 = 1.3;
 const CURVE_POWER: f32 = 0.7;
@@ -122,7 +122,7 @@ impl AudioVisualiser {
             let db = if avg_power > 1e-12 {
                 20.0 * (avg_power.sqrt() / self.window_size as f32).log10()
             } else {
-                -80.0 // Very low floor for zero power
+                -100.0 // Very low floor for zero power
             };
 
             // Only update noise floor when signal is quiet (below current floor + 10dB)

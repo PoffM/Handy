@@ -129,7 +129,7 @@ fn create_audio_recorder(
     // the frontend.
     let recorder = AudioRecorder::new()
         .map_err(|e| anyhow::anyhow!("Failed to create AudioRecorder: {}", e))?
-        .with_vad(Box::new(smoothed_vad))
+        // .with_vad(Box::new(smoothed_vad))
         .with_level_callback({
             let app_handle = app_handle.clone();
             move |levels| {
